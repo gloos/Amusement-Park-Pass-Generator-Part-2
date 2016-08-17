@@ -63,13 +63,32 @@ struct Person: FullyNamed {
 
 }
 
+extension AreaAccess {
+    func determineAcessArea(project: Int?, company: String?) -> AreaAccessType {
+        if project != nil {
+            switch project! {
+            case 1001:
+                return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
+            case 1002:
+                return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: true, officeArea: false)
+                //TODO: Finish this
+            default:
+                <#code#>
+            }
+        } else if company != nil {
+            print(company)
+        }
+    }
+}
+
+
 enum EntrantTypes: String {
     case Guest, Employee, Manager, Vendor
 }
 
 
 enum Guest: String, Entrant {
-    case Classic, VIP, Child
+    case Classic, VIP, Child, Season, Senior
     func areasAccess() -> AreaAccessType {
         return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
     }
@@ -78,7 +97,7 @@ enum Guest: String, Entrant {
         switch self {
         case .Classic, .Child:
             return RideAccessType(all: true, skipAll: false)
-        case .VIP:
+        case .VIP, .Season, .Senior:
             return RideAccessType(all: true, skipAll: true)
         }
         
@@ -87,18 +106,19 @@ enum Guest: String, Entrant {
         switch self {
         case .Classic, .Child:
             return DiscountAccessType(foodDiscount: nil, merchandiseDiscount: nil)
-        case .VIP:
+        case .VIP, .Season, .Senior:
             return DiscountAccessType(foodDiscount: 10, merchandiseDiscount: 20)
         }
     }
     
 }
 
-enum Employee: Entrant {
-    case Food, Ride, Maintenance, Manager
+// I assume that all these people are employees
+enum Employee: String, Entrant {
+    case Food, Ride, Maintenance, Manager, Contract
     func areasAccess() -> AreaAccessType {
     switch self {
-    case .Food, Ride:
+    case .Food, Ride, .Contract:
         return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
     
     case .Maintenance:
@@ -114,6 +134,7 @@ enum Employee: Entrant {
         switch self {
         case .Food, .Ride, .Maintenance, .Manager:
             return RideAccessType(all: true, skipAll: true)
+        break
         }
     }
     
@@ -123,8 +144,11 @@ enum Employee: Entrant {
             return DiscountAccessType(foodDiscount: 15, merchandiseDiscount: 25)
         case .Manager:
             return DiscountAccessType(foodDiscount: 25, merchandiseDiscount: 25)
+        case .Contract:
+            return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
         }
     }
 
 }
+
 
