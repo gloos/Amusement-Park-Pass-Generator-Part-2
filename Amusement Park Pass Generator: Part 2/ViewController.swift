@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var stateTextfield: UITextField!
     @IBOutlet weak var zipcodeTextfield: UITextField!
     var selectedSubEntrant: UIButton?
+    var pass: PassGenerator?
     let fakePerson = Person(firstName: "John", lastName: "Doe", streetAddress: "10 Downing Street", city: "London", state: "England", zipCode: 5451, dateOfBirth: NSDate())
 
     @IBAction func entrantButtonTapped(sender: UIButton) {
@@ -147,6 +148,52 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func generatePass(sender: UIButton) {
+        if selectedSubEntrant == nil {
+            let alertController = UIAlertController(title: "Select a Sub Entrant Type", message: "Please select a sub entrant type (e.g Child, Senior, etc.)", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+                print("OK")
+            }
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+
+        } else {
+            print("We are about to create a pass")
+            if let title = self.selectedSubEntrant?.currentTitle {
+                var person: Person?
+                switch title {
+                case Guest.Child.rawValue:
+                    person = Person(firstName: nil, lastName: nil, streetAddress: nil, city: nil, state: nil, zipCode: nil, dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: title)
+                case Guest.Senior.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: nil, city: nil, state: nil, zipCode: nil, dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: title)
+                case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, Employee.Contract.rawValue, Guest.Season.rawValue, Manager.Manager.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: title)
+                case Vendor.Vendor.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: nil, city: nil, state: nil, zipCode: nil, dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: title)
+                    firstNameTextField.text = fakePerson.firstName
+                    lastNameTextField.text = fakePerson.lastName
+                    dateOfBirthTextFields.text = String(fakePerson.dateOfBirth)
+                default:
+                    print("Cannot populate the data")
+                }
+
+            }
+
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showPass" {
+            print("prepare for segue called, passing \(self.pass)")
+            let vc = PassViewController()
+            vc.generatedPass = self.pass
+        }
+    }
     
     //MARK: Helper methods
     
