@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var fourthEntrantType: UIButton!
     @IBOutlet weak var firstSubEntrantType: UIButton!
     @IBOutlet weak var secondSubEntrantType: UIButton!
+    @IBOutlet weak var thirdSubEntrantType: UIButton!
+    @IBOutlet weak var fourthSubEntrantType: UIButton!
+    @IBOutlet weak var fifthSubEntrantType: UIButton!
 
     @IBOutlet weak var dateOfBirthTextFields: UITextField!
     @IBOutlet weak var ssnTextfield: UITextField!
@@ -28,19 +31,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityTextfield: UITextField!
     @IBOutlet weak var stateTextfield: UITextField!
     @IBOutlet weak var zipcodeTextfield: UITextField!
-    @IBAction func firstEntrantTypeButtonTapped(sender: AnyObject) {
-        
-        firstSubEntrantType.setTitle(Guest.Child.rawValue, forState: .Normal)
-    }
+
     @IBAction func entrantButtonTapped(sender: UIButton) {
         if let title = sender.currentTitle {
             switch title {
             case EntrantTypes.Guest.rawValue:
+                showAllSubEntrantTypeButtons()
                 firstSubEntrantType.setTitle(Guest.Classic.rawValue, forState: .Normal)
                 secondSubEntrantType.setTitle(Guest.VIP.rawValue, forState: .Normal)
+                thirdSubEntrantType.setTitle(Guest.Child.rawValue, forState: .Normal)
+                fourthSubEntrantType.setTitle(Guest.Season.rawValue, forState: .Normal)
+                fifthSubEntrantType.setTitle(Guest.Senior.rawValue, forState: .Normal)
             case EntrantTypes.Employee.rawValue:
+                showAllSubEntrantTypeButtons()
                 firstSubEntrantType.setTitle(Employee.Food.rawValue, forState: .Normal)
                 secondSubEntrantType.setTitle(Employee.Maintenance.rawValue, forState: .Normal)
+                thirdSubEntrantType.setTitle(Employee.Ride.rawValue, forState: .Normal)
+                fourthSubEntrantType.setTitle(Employee.Contract.rawValue, forState: .Normal)
+                fifthSubEntrantType.hidden = true
+            case EntrantTypes.Manager.rawValue:
+                hideAllSubEntrantTypeButtons()
+            case EntrantTypes.Vendor.rawValue:
+                hideAllSubEntrantTypeButtons()
             default:
                 print("We ran out of cases")
                 
@@ -63,6 +75,21 @@ class ViewController: UIViewController {
         thirdEntrantType.setTitle(EntrantTypes.Manager.rawValue, forState: .Normal)
         fourthEntrantType.setTitle(EntrantTypes.Vendor.rawValue, forState: .Normal)
         
+    }
+    func hideAllSubEntrantTypeButtons() {
+        firstSubEntrantType.hidden = true
+        secondSubEntrantType.hidden = true
+        thirdSubEntrantType.hidden = true
+        fourthSubEntrantType.hidden = true
+        fifthSubEntrantType.hidden = true
+    }
+    
+    func showAllSubEntrantTypeButtons() {
+        firstSubEntrantType.hidden = false
+        secondSubEntrantType.hidden = false
+        thirdSubEntrantType.hidden = false
+        fourthSubEntrantType.hidden = false
+        fifthSubEntrantType.hidden = false
     }
 }
 

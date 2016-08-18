@@ -33,7 +33,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="entrantButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iei-6W-VVe"/>
-                                                    <action selector="firstEntrantTypeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="esL-qV-nxD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4u5-QL-v5k">
@@ -182,24 +181,24 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="hQr-WY-waJ">
-                                <rect key="frame" x="7" y="210" width="96" height="21"/>
+                                <rect key="frame" x="7" y="210" width="404" height="21"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="MM / DD / YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AFH-PC-rUG">
-                                        <rect key="frame" x="0.0" y="0.0" width="12" height="21"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="MM / DD / YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AFH-PC-rUG">
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="21"/>
                                         <color key="backgroundColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="### - ## - ####" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JKV-7f-jMr">
-                                        <rect key="frame" x="42" y="0.0" width="12" height="21"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="### - ## - ####" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JKV-7f-jMr">
+                                        <rect key="frame" x="145" y="0.0" width="115" height="21"/>
                                         <color key="backgroundColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="######" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CRS-Fi-b81">
-                                        <rect key="frame" x="84" y="0.0" width="12" height="21"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="######" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CRS-Fi-b81">
+                                        <rect key="frame" x="289" y="0.0" width="115" height="21"/>
                                         <color key="backgroundColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -587,6 +586,12 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="ePO-en-QQd"/>
+                                <exclude reference="0OM-Y3-KLY"/>
+                                <exclude reference="2DN-r2-KbM"/>
+                                <exclude reference="4uF-za-e7G"/>
+                                <exclude reference="5S5-qM-8hu"/>
+                                <exclude reference="mmS-0Z-Hfn"/>
+                                <exclude reference="yrR-aI-xRS"/>
                                 <exclude reference="3Uk-vg-fQr"/>
                                 <exclude reference="DVi-aE-cGf"/>
                                 <exclude reference="DW2-kF-K1n"/>
@@ -601,12 +606,6 @@
                                 <exclude reference="fD4-ny-iO7"/>
                                 <exclude reference="mQY-HA-Ryd"/>
                                 <exclude reference="wqH-eh-oNp"/>
-                                <exclude reference="0OM-Y3-KLY"/>
-                                <exclude reference="2DN-r2-KbM"/>
-                                <exclude reference="4uF-za-e7G"/>
-                                <exclude reference="5S5-qM-8hu"/>
-                                <exclude reference="mmS-0Z-Hfn"/>
-                                <exclude reference="yrR-aI-xRS"/>
                                 <exclude reference="4B3-bC-jCO"/>
                                 <exclude reference="7cG-28-u7E"/>
                                 <exclude reference="L2n-JU-mS4"/>
@@ -622,16 +621,10 @@
                                 <exclude reference="YoN-4b-BZP"/>
                                 <exclude reference="lOU-Uf-gUK"/>
                                 <exclude reference="zc8-X3-48I"/>
-                                <exclude reference="3dL-4b-wId"/>
-                                <exclude reference="nMD-Bv-2cg"/>
                                 <exclude reference="OuP-u9-a2G"/>
                                 <exclude reference="cp0-qg-oU0"/>
                                 <exclude reference="kHY-Lz-dT8"/>
-                                <exclude reference="8ac-mh-cWy"/>
-                                <exclude reference="TV7-xg-5bL"/>
-                                <exclude reference="Dlc-il-03E"/>
-                                <exclude reference="hqJ-RB-OX7"/>
-                                <exclude reference="xuR-Yj-Nws"/>
+                                <exclude reference="WOF-Ni-hnr"/>
                                 <exclude reference="H4T-XN-MDf"/>
                                 <exclude reference="Kc3-iz-sJO"/>
                                 <exclude reference="Wms-aV-TGM"/>
@@ -645,7 +638,13 @@
                                 <exclude reference="Zte-1P-SUY"/>
                                 <exclude reference="bqa-2A-gOC"/>
                                 <exclude reference="uEC-b8-cA6"/>
-                                <exclude reference="WOF-Ni-hnr"/>
+                                <exclude reference="8ac-mh-cWy"/>
+                                <exclude reference="TV7-xg-5bL"/>
+                                <exclude reference="3dL-4b-wId"/>
+                                <exclude reference="nMD-Bv-2cg"/>
+                                <exclude reference="Dlc-il-03E"/>
+                                <exclude reference="hqJ-RB-OX7"/>
+                                <exclude reference="xuR-Yj-Nws"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -655,6 +654,12 @@
                                 <include reference="14x-dx-Zeh"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="0OM-Y3-KLY"/>
+                                <exclude reference="2DN-r2-KbM"/>
+                                <include reference="4uF-za-e7G"/>
+                                <exclude reference="5S5-qM-8hu"/>
+                                <exclude reference="mmS-0Z-Hfn"/>
+                                <include reference="yrR-aI-xRS"/>
                                 <include reference="3Uk-vg-fQr"/>
                                 <exclude reference="DVi-aE-cGf"/>
                                 <exclude reference="DW2-kF-K1n"/>
@@ -669,12 +674,6 @@
                                 <include reference="fD4-ny-iO7"/>
                                 <exclude reference="mQY-HA-Ryd"/>
                                 <include reference="wqH-eh-oNp"/>
-                                <include reference="0OM-Y3-KLY"/>
-                                <exclude reference="2DN-r2-KbM"/>
-                                <include reference="4uF-za-e7G"/>
-                                <exclude reference="5S5-qM-8hu"/>
-                                <exclude reference="mmS-0Z-Hfn"/>
-                                <include reference="yrR-aI-xRS"/>
                                 <include reference="4B3-bC-jCO"/>
                                 <exclude reference="7cG-28-u7E"/>
                                 <exclude reference="L2n-JU-mS4"/>
@@ -690,16 +689,10 @@
                                 <exclude reference="YoN-4b-BZP"/>
                                 <include reference="lOU-Uf-gUK"/>
                                 <exclude reference="zc8-X3-48I"/>
-                                <include reference="3dL-4b-wId"/>
-                                <include reference="nMD-Bv-2cg"/>
                                 <include reference="OuP-u9-a2G"/>
                                 <include reference="cp0-qg-oU0"/>
                                 <include reference="kHY-Lz-dT8"/>
-                                <include reference="8ac-mh-cWy"/>
-                                <include reference="TV7-xg-5bL"/>
-                                <include reference="Dlc-il-03E"/>
-                                <include reference="hqJ-RB-OX7"/>
-                                <include reference="xuR-Yj-Nws"/>
+                                <include reference="WOF-Ni-hnr"/>
                                 <exclude reference="H4T-XN-MDf"/>
                                 <include reference="Kc3-iz-sJO"/>
                                 <include reference="Wms-aV-TGM"/>
@@ -713,7 +706,13 @@
                                 <include reference="Zte-1P-SUY"/>
                                 <include reference="bqa-2A-gOC"/>
                                 <include reference="uEC-b8-cA6"/>
-                                <include reference="WOF-Ni-hnr"/>
+                                <include reference="8ac-mh-cWy"/>
+                                <include reference="TV7-xg-5bL"/>
+                                <include reference="3dL-4b-wId"/>
+                                <include reference="nMD-Bv-2cg"/>
+                                <include reference="Dlc-il-03E"/>
+                                <include reference="hqJ-RB-OX7"/>
+                                <include reference="xuR-Yj-Nws"/>
                             </mask>
                         </variation>
                     </view>
@@ -721,10 +720,12 @@
                         <outlet property="cityTextfield" destination="NfM-Ul-K23" id="bNZ-lX-KtP"/>
                         <outlet property="companyTextfield" destination="z5l-ON-9Wk" id="PD7-35-BPV"/>
                         <outlet property="dateOfBirthTextFields" destination="AFH-PC-rUG" id="D1G-Sk-m4z"/>
+                        <outlet property="fifthSubEntrantType" destination="1Ir-bV-2nH" id="zi0-EI-crC"/>
                         <outlet property="firstEntrantType" destination="N7S-b0-sb5" id="mLS-DC-Y81"/>
                         <outlet property="firstNameTextField" destination="wYb-3p-WRe" id="5do-eQ-v3r"/>
                         <outlet property="firstSubEntrantType" destination="2p9-gU-Ff0" id="fJo-1F-Rke"/>
                         <outlet property="fourthEntrantType" destination="VyB-Ir-5sT" id="eg1-4R-kKl"/>
+                        <outlet property="fourthSubEntrantType" destination="ZmE-hy-Cpj" id="EI4-ek-5LG"/>
                         <outlet property="lastNameTextField" destination="i7H-VZ-fQC" id="Byr-dr-gAP"/>
                         <outlet property="projectNoTextfield" destination="CRS-Fi-b81" id="lg6-b9-V0e"/>
                         <outlet property="secondEntrantType" destination="4u5-QL-v5k" id="YiW-JA-syD"/>
@@ -733,6 +734,7 @@
                         <outlet property="stateTextfield" destination="Akl-PO-iO0" id="JfZ-8y-i2l"/>
                         <outlet property="streetTextfield" destination="uUi-DK-Ubk" id="yPJ-fF-b7c"/>
                         <outlet property="thirdEntrantType" destination="J7d-qq-9Dw" id="mJs-qr-Cxv"/>
+                        <outlet property="thirdSubEntrantType" destination="Axd-Us-4bV" id="gFQ-mU-74L"/>
                         <outlet property="zipcodeTextfield" destination="vpc-fs-tUe" id="WK8-rU-DRY"/>
                     </connections>
                 </viewController>

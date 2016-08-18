@@ -71,12 +71,31 @@ extension AreaAccess {
                 return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
             case 1002:
                 return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: true, officeArea: false)
-                //TODO: Finish this
+            case 1003:
+                return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: true)
+            case 2001:
+                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: true)
+            case 2002:
+                return AreaAccessType(amusementArea: false, kitchenArea: true, rideControl: false, maintenanceArea: true, officeArea: false)
             default:
-                <#code#>
+                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
+
             }
         } else if company != nil {
-            print(company)
+            switch company! {
+                case "Acme":
+                    return AreaAccessType(amusementArea: false, kitchenArea: true, rideControl: false, maintenanceArea: false, officeArea: false)
+                case "Orkin":
+                    return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: false, officeArea: false)
+                case "Fedex":
+                    return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: true, officeArea: true)
+                case "NW Electrical":
+                    return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: true)
+            default:
+                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
+            }
+        } else {
+            return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
         }
     }
 }
@@ -113,18 +132,16 @@ enum Guest: String, Entrant {
     
 }
 
-// I assume that all these people are employees
+
 enum Employee: String, Entrant {
-    case Food, Ride, Maintenance, Manager, Contract
+    case Food, Ride, Maintenance,  Contract
     func areasAccess() -> AreaAccessType {
     switch self {
     case .Food, Ride, .Contract:
         return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
-    
     case .Maintenance:
         return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: false)
-    case .Manager:
-        return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: true)
+
     
         }
     
@@ -132,9 +149,10 @@ enum Employee: String, Entrant {
     
     func rideAccess() -> RideAccessType {
         switch self {
-        case .Food, .Ride, .Maintenance, .Manager:
+        case .Food, .Ride, .Maintenance:
             return RideAccessType(all: true, skipAll: true)
-        break
+        case .Contract:
+            return RideAccessType(all: false, skipAll: false)
         }
     }
     
@@ -142,13 +160,62 @@ enum Employee: String, Entrant {
         switch self {
         case .Food, .Ride, .Maintenance:
             return DiscountAccessType(foodDiscount: 15, merchandiseDiscount: 25)
-        case .Manager:
-            return DiscountAccessType(foodDiscount: 25, merchandiseDiscount: 25)
         case .Contract:
             return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
         }
     }
 
 }
+/* I have created the Vendor and Manager as an enums to be in line with other types of entrants which I think makes the code easier to read and more scalable if we add more types of Vendors in the future, however, switch statements wouldn't be needed it here since there's just one value*/
+enum Vendor: String, Entrant {
+    case Vendor
+    func areasAccess() -> AreaAccessType {
+        switch self {
+        case .Vendor:
+            return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: false, maintenanceArea: false, officeArea: false)
+            
+        }
+        
+    }
+    
+    func rideAccess() -> RideAccessType {
+        switch self {
+        case .Vendor:
+            return RideAccessType(all: false, skipAll: false)
+        }
+    }
+    
+    func discountAccess() -> DiscountAccessType {
+        switch self {
+        case .Vendor:
+            return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
+        }
+    }
+    
+}
 
+enum Manager: String, Entrant {
+    case Manager
+    func areasAccess() -> AreaAccessType {
+        switch self {
+            case .Manager:
+                return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: true)
+        }
+    }
+    
+    func rideAccess() -> RideAccessType {
+        switch self {
+        case  .Manager:
+            return RideAccessType(all: true, skipAll: true)
+        }
+        
+    }
+    func discountAccess() -> DiscountAccessType {
+        switch self {
+        case .Manager:
+            return DiscountAccessType(foodDiscount: 25, merchandiseDiscount: 25)
+        }
+    }
+    
+}
 
