@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-
+    var vendorDateOfVisit = NSDate()
     @IBOutlet weak var firstEntrantType: UIButton!
     @IBOutlet weak var secondEntrantType: UIButton!
     @IBOutlet weak var thirdEntrantType: UIButton!
@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var zipcodeTextfield: UITextField!
 
     @IBAction func entrantButtonTapped(sender: UIButton) {
+        disableForm()
         if let title = sender.currentTitle {
             switch title {
             case EntrantTypes.Guest.rawValue:
@@ -51,18 +52,48 @@ class ViewController: UIViewController {
                 fifthSubEntrantType.hidden = true
             case EntrantTypes.Manager.rawValue:
                 hideAllSubEntrantTypeButtons()
-            case EntrantTypes.Vendor.rawValue:
-                hideAllSubEntrantTypeButtons()
+                enableAddressTextfields()
+            case Vendor.Vendor.rawValue:
+                firstNameTextField.userInteractionEnabled = true
+                firstNameTextField.backgroundColor = UIColor.whiteColor()
+                lastNameTextField.userInteractionEnabled = true
+                lastNameTextField.backgroundColor = UIColor.whiteColor()
+                dateOfBirthTextFields.userInteractionEnabled = true
+                dateOfBirthTextFields.backgroundColor = UIColor.whiteColor()
             default:
                 print("We ran out of cases")
                 
             }
         }
     }
+    @IBAction func subEntrantButtonTapped(sender: UIButton) {
+        disableForm()
+        if let title = sender.currentTitle {
+            switch title {
+            case Guest.Child.rawValue:
+                dateOfBirthTextFields.userInteractionEnabled = true
+                dateOfBirthTextFields.backgroundColor = UIColor.whiteColor()
+            case Guest.Senior.rawValue:
+                firstNameTextField.userInteractionEnabled = true
+                firstNameTextField.backgroundColor = UIColor.whiteColor()
+                lastNameTextField.userInteractionEnabled = true
+                lastNameTextField.backgroundColor = UIColor.whiteColor()
+                dateOfBirthTextFields.userInteractionEnabled = true
+                dateOfBirthTextFields.backgroundColor = UIColor.whiteColor()
+            case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, Employee.Contract.rawValue, Guest.Season.rawValue:
+                enableAddressTextfields()
+
+            default:
+                print("No information required")
+            }
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonTitles()
+        disableForm()
     }
 
 
@@ -90,6 +121,44 @@ class ViewController: UIViewController {
         thirdSubEntrantType.hidden = false
         fourthSubEntrantType.hidden = false
         fifthSubEntrantType.hidden = false
+    }
+    
+    func disableForm() {
+        dateOfBirthTextFields.userInteractionEnabled = false
+        dateOfBirthTextFields.backgroundColor = UIColor.grayColor()
+        ssnTextfield.userInteractionEnabled = false
+        ssnTextfield.backgroundColor = UIColor.grayColor()
+        projectNoTextfield.userInteractionEnabled = false
+        projectNoTextfield.backgroundColor = UIColor.grayColor()
+        firstNameTextField.userInteractionEnabled = false
+        firstNameTextField.backgroundColor = UIColor.grayColor()
+        lastNameTextField.userInteractionEnabled = false
+        lastNameTextField.backgroundColor = UIColor.grayColor()
+        companyTextfield.userInteractionEnabled = false
+        companyTextfield.backgroundColor = UIColor.grayColor()
+        streetTextfield.userInteractionEnabled = false
+        streetTextfield.backgroundColor = UIColor.grayColor()
+        cityTextfield.userInteractionEnabled = false
+        cityTextfield.backgroundColor = UIColor.grayColor()
+        stateTextfield.userInteractionEnabled = false
+        stateTextfield.backgroundColor = UIColor.grayColor()
+        zipcodeTextfield.userInteractionEnabled = false
+        zipcodeTextfield.backgroundColor = UIColor.grayColor()
+    }
+    
+    func enableAddressTextfields() {
+        firstNameTextField.userInteractionEnabled = true
+        firstNameTextField.backgroundColor = UIColor.whiteColor()
+        lastNameTextField.userInteractionEnabled = true
+        lastNameTextField.backgroundColor = UIColor.whiteColor()
+        streetTextfield.userInteractionEnabled = true
+        streetTextfield.backgroundColor = UIColor.whiteColor()
+        cityTextfield.userInteractionEnabled = true
+        cityTextfield.backgroundColor = UIColor.whiteColor()
+        stateTextfield.userInteractionEnabled = true
+        stateTextfield.backgroundColor = UIColor.whiteColor()
+        zipcodeTextfield.userInteractionEnabled = true
+        zipcodeTextfield.backgroundColor = UIColor.whiteColor()
     }
 }
 

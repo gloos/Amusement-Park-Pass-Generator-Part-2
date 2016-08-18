@@ -89,6 +89,9 @@
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="subEntrantButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tWJ-aS-GGu"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muA-hM-Cxl">
                                                 <rect key="frame" x="118" y="0.0" width="50" height="30"/>
@@ -96,6 +99,9 @@
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="subEntrantButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZwI-RH-LjP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Axd-Us-4bV">
                                                 <rect key="frame" x="236" y="0.0" width="50" height="30"/>
@@ -103,6 +109,9 @@
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="subEntrantButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VZl-cr-9Da"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmE-hy-Cpj">
                                                 <rect key="frame" x="236" y="0.0" width="50" height="30"/>
@@ -110,6 +119,9 @@
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="subEntrantButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sVb-vh-b39"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ir-bV-2nH">
                                                 <rect key="frame" x="354" y="0.0" width="50" height="30"/>
@@ -117,6 +129,9 @@
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="subEntrantButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s44-9p-hKr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <variation key="default">
