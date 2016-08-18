@@ -31,9 +31,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityTextfield: UITextField!
     @IBOutlet weak var stateTextfield: UITextField!
     @IBOutlet weak var zipcodeTextfield: UITextField!
+    var selectedSubEntrant: UIButton?
+    let fakePerson = Person(firstName: "John", lastName: "Doe", streetAddress: "10 Downing Street", city: "London", state: "England", zipCode: 5451, dateOfBirth: NSDate())
 
     @IBAction func entrantButtonTapped(sender: UIButton) {
+        resetForm()
         disableForm()
+        self.selectedSubEntrant = nil
         if let title = sender.currentTitle {
             switch title {
             case EntrantTypes.Guest.rawValue:
@@ -51,13 +55,18 @@ class ViewController: UIViewController {
                 fourthSubEntrantType.setTitle(Employee.Contract.rawValue, forState: .Normal)
                 fifthSubEntrantType.hidden = true
             case EntrantTypes.Manager.rawValue:
+                self.selectedSubEntrant = sender
                 hideAllSubEntrantTypeButtons()
                 enableAddressTextfields()
             case Vendor.Vendor.rawValue:
+                hideAllSubEntrantTypeButtons()
+                self.selectedSubEntrant = sender
                 firstNameTextField.userInteractionEnabled = true
                 firstNameTextField.backgroundColor = UIColor.whiteColor()
                 lastNameTextField.userInteractionEnabled = true
                 lastNameTextField.backgroundColor = UIColor.whiteColor()
+                companyTextfield.userInteractionEnabled = true
+                companyTextfield.backgroundColor = UIColor.whiteColor()
                 dateOfBirthTextFields.userInteractionEnabled = true
                 dateOfBirthTextFields.backgroundColor = UIColor.whiteColor()
             default:
@@ -67,7 +76,10 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func subEntrantButtonTapped(sender: UIButton) {
+        resetForm()
         disableForm()
+        self.selectedSubEntrant = sender
+        print(self.selectedSubEntrant)
         if let title = sender.currentTitle {
             switch title {
             case Guest.Child.rawValue:
@@ -93,9 +105,47 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonTitles()
+        hideAllSubEntrantTypeButtons()
         disableForm()
+        
     }
 
+    @IBAction func populateData(sender: AnyObject) {
+        resetForm()
+        if self.selectedSubEntrant != nil {
+            if let title = self.selectedSubEntrant?.currentTitle {
+                switch title {
+                case Guest.Child.rawValue:
+                    dateOfBirthTextFields.text = String(fakePerson.dateOfBirth)
+                case Guest.Senior.rawValue:
+                    firstNameTextField.text = fakePerson.firstName
+                    lastNameTextField.text = fakePerson.lastName
+                    dateOfBirthTextFields.text = String(fakePerson.dateOfBirth)
+                case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, Employee.Contract.rawValue, Guest.Season.rawValue, Manager.Manager.rawValue:
+                    firstNameTextField.text = fakePerson.firstName
+                    lastNameTextField.text = fakePerson.lastName
+                    streetTextfield.text = fakePerson.streetAddress
+                    cityTextfield.text = fakePerson.city
+                    stateTextfield.text = fakePerson.state
+                    zipcodeTextfield.text = String(fakePerson.zipCode)
+                case Vendor.Vendor.rawValue:
+                    firstNameTextField.text = fakePerson.firstName
+                    lastNameTextField.text = fakePerson.lastName
+                    dateOfBirthTextFields.text = String(fakePerson.dateOfBirth)
+                default:
+                    print("Cannot populate the data")
+                }
+            }
+        } else {
+            let alertController = UIAlertController(title: "Select a Sub Entrant Type", message: "Please select a sub entrant type (e.g Child, Senior, etc.)", preferredStyle: UIAlertControllerStyle.Alert)
+
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+                print("OK")
+            }
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
 
     
     //MARK: Helper methods
@@ -160,5 +210,29 @@ class ViewController: UIViewController {
         zipcodeTextfield.userInteractionEnabled = true
         zipcodeTextfield.backgroundColor = UIColor.whiteColor()
     }
+    
+    func resetForm() {
+        dateOfBirthTextFields.text = nil
+        ssnTextfield.text = nil
+        projectNoTextfield.text = nil
+        firstNameTextField.text = nil
+        lastNameTextField.text = nil
+        companyTextfield.text = nil
+        streetTextfield.text = nil
+        cityTextfield.text = nil
+        stateTextfield.text = nil
+        zipcodeTextfield.text = nil
+    }
+    
+    func twoDaysAgo() -> NSDate {
+        let calendar = NSCalendar.currentCalendar()
+        return calendar.dateByAddingUnit(.Day, value: -2, toDate: NSDate(), options: [])!
+    }
+    
+    func compareDates(date: NSDate) -> Bool {
+        let today = NSDate()
+        return NSCalendar.currentCalendar().isDate(today, equalToDate: date, toUnitGranularity: [.Day, .Month])
+    }
+
 }
 

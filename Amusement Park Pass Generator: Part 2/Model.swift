@@ -63,6 +63,8 @@ struct Person: FullyNamed {
 
 }
 
+
+
 extension AreaAccess {
     func determineAcessArea(project: Int?, company: String?) -> AreaAccessType {
         if project != nil {
