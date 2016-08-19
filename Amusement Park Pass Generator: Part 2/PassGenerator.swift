@@ -11,10 +11,10 @@ import Foundation
 class PassGenerator {
 
     let entrant: Person
-    let entrantType: String
+    let entrantType: Entrant
 
     
-    init(entrant: Person, entrantType: String) {
+    init(entrant: Person, entrantType: Entrant) {
         self.entrant = entrant
         self.entrantType = entrantType
     }
@@ -24,11 +24,11 @@ class PassGenerator {
     
     func verifyDataIntegrity() throws {
         switch self.entrantType {
-        case Guest.Child.rawValue:
+        case Guest.Child:
             guard self.entrant.dateOfBirth != nil else {
                 throw DataIntegrity.MissingDateOfBirth
             }
-        case Guest.Classic.rawValue, Guest.VIP.rawValue:
+        case Guest.Classic, Guest.VIP:
             print("We don't need information")
         case is Employee:
             guard self.entrant.firstName != nil else {

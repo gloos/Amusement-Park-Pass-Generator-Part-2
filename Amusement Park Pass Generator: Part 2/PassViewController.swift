@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class PassViewController : UIViewController {
-    
+    var sound: SystemSoundID = 0
     var generatedPass: PassGenerator?
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var passType: UILabel!
     
+    @IBOutlet weak var testResultLabel: UILabel!
     @IBOutlet weak var ridesLabel: UILabel!
     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var secondDiscountLabel: UILabel!
@@ -23,48 +25,112 @@ class PassViewController : UIViewController {
     
     var discount: DiscountAccessType {
         if let pass = generatedPass?.entrantType {
-            switch pass {
-            case Guest.VIP.rawValue:
-                return Guest.VIP.discountAccess()
-            case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue:
-                return Employee.Food.discountAccess()
-            case Manager.Manager.rawValue:
-                return Manager.Manager.discountAccess()
-            case Guest.Season.rawValue:
-                return Guest.Season.discountAccess()
-            case Guest.Senior.rawValue:
-                return Guest.Senior.discountAccess()
-            default:
-                return Vendor.Vendor.discountAccess()
-            }
+            return pass.discountAccess()
+        } else {
+            return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
         }
-        return Manager.Manager.discountAccess()
     }
+    
     
     var rides: String {
         if let pass = generatedPass?.entrantType {
-            switch pass {
-            case Guest.VIP.rawValue, Guest.Season.rawValue, Guest.Senior.rawValue:
-                return "Unlimited rides access / Skip lines"
-            case Guest.Classic.rawValue, Guest.Child.rawValue, Employee.Food.rawValue, Employee.Maintenance.rawValue, Employee.Ride.rawValue, Manager.Manager.rawValue:
-                return "Unlimited rides access"
-            default:
-                return "Rides access denied"
+            let access = pass.rideAccess()
+            if access.all == true && access.skipAll == true {
+                return "Can access all rides and skip all lines"
+            } else if access.all == true {
+                return "Can access all rides"
+            } else if access.skipAll == true {
+                return " Can skip all lines"
+            } else {
+                return "Cannot skip lines or access any ride"
             }
+        } else {
+            return "The pass was badly generated, please try again"
         }
-        return "Rides access denied"
     }
     
-    override func viewDidLoad() {
-        print(generatedPass?.entrant.firstName)
-        if self.generatedPass != nil, let firstName = generatedPass?.entrant.firstName, let lastName = generatedPass?.entrant.lastName, let pass = generatedPass?.entrantType {
-            print("generatedPass exists")
-            fullName.text = "\(firstName) \(lastName)"
-            passType.text = pass
-            self.discountLabel.text = "\(discount.foodDiscount!)% food discount"
-            self.secondDiscountLabel.text = "\(discount.merchandiseDiscount!)% merchandise discount"
-            ridesLabel.text = rides
+    var areaAccess: AreaAccessType {
+        if let pass = generatedPass?.entrantType {
+            return pass.areasAccess()
+        } else {
+            return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
         }
     }
+    
+    @IBAction func kitchenAccessButtonTapped(sender: UIButton) {
+        if self.areaAccess.kitchenArea == true {
+            testResultLabel.backgroundColor = UIColor.greenColor()
+            playGrantedAccessSound()
+            testResultLabel.text = "Access Granted"
+        } else {
+            testResultLabel.backgroundColor = UIColor.redColor()
+            playDeniedAccessSound()
+            testResultLabel.text = "Access Denied!"
+            
+        }
+    }
+    @IBAction func skipLineButtonTapped(sender: UIButton) {
+        if generatedPass?.entrantType.rideAccess().skipAll == true {
+            testResultLabel.backgroundColor = UIColor.greenColor()
+            playGrantedAccessSound()
+            testResultLabel.text = "Access Granted"
+        } else {
+            testResultLabel.backgroundColor = UIColor.redColor()
+            playDeniedAccessSound()
+            testResultLabel.text = "Access Denied!"
+            
+        }
+    }
+    @IBAction func foodDiscountButtonTapped(sender: UIButton) {
+        if let foodDiscount = self.discount.foodDiscount where foodDiscount != 0 {
+            testResultLabel.backgroundColor = UIColor.greenColor()
+            playGrantedAccessSound()
+            testResultLabel.text = "The Entrant has \(foodDiscount) % off here!"
+        } else {
+            testResultLabel.backgroundColor = UIColor.redColor()
+            playDeniedAccessSound()
+            testResultLabel.text = "This Entrant has no discount here. :("
+            
+        }
+    }
+    override func viewDidLoad() {
+        if self.generatedPass != nil, let firstName = generatedPass?.entrant.firstName, let lastName = generatedPass?.entrant.lastName, let pass = generatedPass?.entrantType {
+            print("generatedPass exists \(pass)")
+            fullName.text = "\(firstName) \(lastName)"
+            print("The pass is \(pass)")
+            passType.text = String(pass)
+            if let foodDiscount = self.discount.foodDiscount where foodDiscount != 0 {
+            self.discountLabel.text = "\(discount.foodDiscount!)% food discount"
+            }
+            if let merchandiseDiscount = self.discount.merchandiseDiscount where merchandiseDiscount != 0 {
+                self.secondDiscountLabel.text = "\(discount.merchandiseDiscount!)% merchandise discount"
+            }
+
+            ridesLabel.text = self.rides
+            
+        }
+    }
+
+        
+        //MARK: Helper methods
+        
+    func playGrantedAccessSound() {
+        self.sound = 0
+        let pathToSoundFile = NSBundle.mainBundle().pathForResource("AccessGranted", ofType: "wav")
+        let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
+        AudioServicesCreateSystemSoundID(soundURL, &self.sound)
+        AudioServicesPlaySystemSound(self.sound)
+        
+    }
+    
+    func playDeniedAccessSound() {
+        self.sound = 0
+        let pathToSoundFile = NSBundle.mainBundle().pathForResource("AccessDenied", ofType: "wav")
+        let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
+        AudioServicesCreateSystemSoundID(soundURL, &self.sound)
+        AudioServicesPlaySystemSound(self.sound)
+        
+    }
+
     
 }

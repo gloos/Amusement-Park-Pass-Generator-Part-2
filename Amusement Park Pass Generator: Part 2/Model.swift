@@ -111,7 +111,10 @@ enum EntrantTypes: String {
 enum Guest: String, Entrant {
     case Classic, VIP, Child, Season, Senior
     func areasAccess() -> AreaAccessType {
+        switch self {
+        case .Classic, .VIP, .Child, .Season, .Senior:
         return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
+        }
     }
     
     func rideAccess() -> RideAccessType {
@@ -139,10 +142,12 @@ enum Employee: String, Entrant {
     case Food, Ride, Maintenance
     func areasAccess() -> AreaAccessType {
     switch self {
-    case .Food, Ride:
-        return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
+    case .Food:
+        return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: false, maintenanceArea: false, officeArea: false)
     case .Maintenance:
         return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: false)
+    case .Ride:
+        return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
 
     
         }
@@ -152,7 +157,7 @@ enum Employee: String, Entrant {
     func rideAccess() -> RideAccessType {
         switch self {
         case .Food, .Ride, .Maintenance:
-            return RideAccessType(all: true, skipAll: true)
+            return RideAccessType(all: true, skipAll: false)
 
         }
     }
@@ -231,7 +236,7 @@ enum Manager: String, Entrant {
     func rideAccess() -> RideAccessType {
         switch self {
         case  .Manager:
-            return RideAccessType(all: true, skipAll: true)
+            return RideAccessType(all: true, skipAll: false)
         }
         
     }

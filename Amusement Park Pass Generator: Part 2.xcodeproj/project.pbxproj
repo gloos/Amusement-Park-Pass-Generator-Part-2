@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0DF36F1D672BE400211B45 /* AccessDenied.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DF36D1D672BE400211B45 /* AccessDenied.wav */; };
+		4E0DF3701D672BE400211B45 /* AccessGranted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4E0DF36E1D672BE400211B45 /* AccessGranted.wav */; };
 		4E1305111D6649FE00875280 /* PassGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1305101D6649FE00875280 /* PassGenerator.swift */; };
 		4E1305131D6658F100875280 /* PassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1305121D6658F100875280 /* PassViewController.swift */; };
 		4E16433A1D64845B00AE295D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1643391D64845B00AE295D /* AppDelegate.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E0DF36D1D672BE400211B45 /* AccessDenied.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AccessDenied.wav; sourceTree = "<group>"; };
+		4E0DF36E1D672BE400211B45 /* AccessGranted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AccessGranted.wav; sourceTree = "<group>"; };
 		4E1305101D6649FE00875280 /* PassGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassGenerator.swift; sourceTree = "<group>"; };
 		4E1305121D6658F100875280 /* PassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassViewController.swift; sourceTree = "<group>"; };
 		4E1643361D64845B00AE295D /* Amusement Park Pass Generator: Part 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amusement Park Pass Generator: Part 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +74,8 @@
 				4E1643401D64845B00AE295D /* Assets.xcassets */,
 				4E1643421D64845B00AE295D /* LaunchScreen.storyboard */,
 				4E1643451D64845B00AE295D /* Info.plist */,
+				4E0DF36D1D672BE400211B45 /* AccessDenied.wav */,
+				4E0DF36E1D672BE400211B45 /* AccessGranted.wav */,
 			);
 			path = "Amusement Park Pass Generator: Part 2";
 			sourceTree = "<group>";
@@ -159,8 +165,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E1643441D64845B00AE295D /* LaunchScreen.storyboard in Resources */,
+				4E0DF3701D672BE400211B45 /* AccessGranted.wav in Resources */,
 				4E1643411D64845B00AE295D /* Assets.xcassets in Resources */,
 				4E16433F1D64845B00AE295D /* Main.storyboard in Resources */,
+				4E0DF36F1D672BE400211B45 /* AccessDenied.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

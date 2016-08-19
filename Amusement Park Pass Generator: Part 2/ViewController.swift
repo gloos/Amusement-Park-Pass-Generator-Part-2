@@ -110,6 +110,9 @@ class ViewController: UIViewController {
         disableForm()
         
     }
+    override func viewWillAppear(animated: Bool) {
+        self.pass = nil
+    }
 
     @IBAction func populateData(sender: AnyObject) {
         resetForm()
@@ -164,17 +167,40 @@ class ViewController: UIViewController {
                 var person: Person?
                 switch title {
                 case Guest.Child.rawValue:
-                    person = Person(firstName: nil, lastName: nil, streetAddress: nil, city: nil, state: nil, zipCode: nil, dateOfBirth: NSDate())
-                    self.pass = PassGenerator(entrant: person!, entrantType: title)
-                case Guest.Senior.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: nil, city: nil, state: nil, zipCode: nil, dateOfBirth: NSDate())
-                    self.pass = PassGenerator(entrant: person!, entrantType: title)
-                case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, ContractEmployee.Contract.rawValue, Guest.Season.rawValue, Manager.Manager.rawValue:
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
-                    self.pass = PassGenerator(entrant: person!, entrantType: title)
+                    self.pass = PassGenerator(entrant: person!, entrantType: Guest.Child)
+                case Guest.Senior.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: Guest.Senior)
+                case Employee.Ride.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: Employee.Ride)
+                case Employee.Maintenance.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: Employee.Maintenance)
+                case ContractEmployee.Contract.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: ContractEmployee.Contract)
+
+                case Guest.Season.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: Guest.Season)
+                case Guest.VIP.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: Guest.VIP)
+                case Guest.Classic.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: Guest.Classic)
+                case Manager.Manager.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: Manager.Manager)
+
+                case Employee.Food.rawValue:
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    self.pass = PassGenerator(entrant: person!, entrantType: Employee.Food)
                 case Vendor.Vendor.rawValue:
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: nil, city: nil, state: nil, zipCode: nil, dateOfBirth: NSDate())
-                    self.pass = PassGenerator(entrant: person!, entrantType: title)
+                    self.pass = PassGenerator(entrant: person!, entrantType: Vendor.Vendor)
                     firstNameTextField.text = fakePerson.firstName
                     lastNameTextField.text = fakePerson.lastName
                     dateOfBirthTextFields.text = String(fakePerson.dateOfBirth)

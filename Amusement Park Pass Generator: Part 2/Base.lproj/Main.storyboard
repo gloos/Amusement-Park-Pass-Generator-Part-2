@@ -832,35 +832,50 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pS-cd-3GL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pS-cd-3GL">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="241" y="35" width="90" height="23"/>
+                                        </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewK-Uu-EEi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewK-Uu-EEi">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.41262019230000002" green="0.41262019230000002" blue="0.41262019230000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="241" y="116" width="37.5" height="18"/>
+                                        </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkP-9M-SR7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkP-9M-SR7">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.41262019230000002" green="0.41262019230000002" blue="0.41262019230000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="241" y="142" width="37.5" height="18"/>
+                                        </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57j-HQ-rD1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57j-HQ-rD1">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.41262019230000002" green="0.41262019230000002" blue="0.41262019230000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="241" y="163" width="37.5" height="18"/>
+                                        </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pass Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWP-9Q-hmz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWP-9Q-hmz">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <color key="textColor" red="0.41262019230769231" green="0.41262019230769231" blue="0.41262019230769231" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular" misplaced="YES">
+                                            <rect key="frame" x="241" y="66" width="84.5" height="21"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -945,29 +960,38 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yAm-m2-LlF">
                                 <rect key="frame" x="56" y="616" width="427" height="32"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5T-pu-6dr">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5T-pu-6dr">
                                         <rect key="frame" x="0.0" y="0.0" width="129" height="32"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <state key="normal" title="Area Access">
+                                        <state key="normal" title="Kitchen Access">
                                             <color key="titleColor" red="0.28235294117647058" green="0.51372549019607838" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="kitchenAccessButtonTapped:" destination="A74-EK-oZc" eventType="touchUpInside" id="6gE-D1-rwE"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIf-MR-SMk">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIf-MR-SMk">
                                         <rect key="frame" x="149" y="0.0" width="129" height="32"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <state key="normal" title="Ride Access">
+                                        <state key="normal" title="Skip Lines">
                                             <color key="titleColor" red="0.28235294119999998" green="0.51372549020000002" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="skipLineButtonTapped:" destination="A74-EK-oZc" eventType="touchUpInside" id="2fc-6I-WIa"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqW-AA-MBz">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqW-AA-MBz">
                                         <rect key="frame" x="298" y="0.0" width="129" height="32"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <state key="normal" title="Discount Access">
+                                        <state key="normal" title="Food Discount">
                                             <color key="titleColor" red="0.28235294119999998" green="0.51372549020000002" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="foodDiscountButtonTapped:" destination="A74-EK-oZc" eventType="touchUpInside" id="riO-Jv-dfQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1083,6 +1107,9 @@
                                 <exclude reference="0Ok-FY-vK3"/>
                                 <exclude reference="ABw-VD-UQi"/>
                                 <exclude reference="e0n-Pe-rLe"/>
+                                <exclude reference="8hu-gU-Tp2"/>
+                                <exclude reference="bpZ-PY-kJ0"/>
+                                <exclude reference="gna-Cb-ujG"/>
                                 <exclude reference="7DC-ld-qvI"/>
                                 <exclude reference="GML-Up-J26"/>
                                 <exclude reference="T04-70-fX8"/>
@@ -1090,9 +1117,6 @@
                                 <exclude reference="Waf-hs-DET"/>
                                 <exclude reference="YCw-Gy-NYs"/>
                                 <exclude reference="tSj-Rb-Wel"/>
-                                <exclude reference="8hu-gU-Tp2"/>
-                                <exclude reference="bpZ-PY-kJ0"/>
-                                <exclude reference="gna-Cb-ujG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -1116,6 +1140,9 @@
                                 <include reference="0Ok-FY-vK3"/>
                                 <include reference="ABw-VD-UQi"/>
                                 <include reference="e0n-Pe-rLe"/>
+                                <include reference="8hu-gU-Tp2"/>
+                                <include reference="bpZ-PY-kJ0"/>
+                                <include reference="gna-Cb-ujG"/>
                                 <include reference="7DC-ld-qvI"/>
                                 <include reference="GML-Up-J26"/>
                                 <include reference="T04-70-fX8"/>
@@ -1123,9 +1150,6 @@
                                 <exclude reference="Waf-hs-DET"/>
                                 <include reference="YCw-Gy-NYs"/>
                                 <include reference="tSj-Rb-Wel"/>
-                                <include reference="8hu-gU-Tp2"/>
-                                <include reference="bpZ-PY-kJ0"/>
-                                <include reference="gna-Cb-ujG"/>
                             </mask>
                         </variation>
                     </view>
@@ -1135,6 +1159,7 @@
                         <outlet property="passType" destination="yWP-9Q-hmz" id="68d-jD-iqR"/>
                         <outlet property="ridesLabel" destination="ewK-Uu-EEi" id="dee-FY-Na8"/>
                         <outlet property="secondDiscountLabel" destination="57j-HQ-rD1" id="arY-iw-6zC"/>
+                        <outlet property="testResultLabel" destination="i61-1H-wNW" id="k9K-nH-KJb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9h-8c-qUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
