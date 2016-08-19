@@ -53,7 +53,7 @@ class ViewController: UIViewController {
                 firstSubEntrantType.setTitle(Employee.Food.rawValue, forState: .Normal)
                 secondSubEntrantType.setTitle(Employee.Maintenance.rawValue, forState: .Normal)
                 thirdSubEntrantType.setTitle(Employee.Ride.rawValue, forState: .Normal)
-                fourthSubEntrantType.setTitle(Employee.Contract.rawValue, forState: .Normal)
+                fourthSubEntrantType.setTitle(ContractEmployee.Contract.rawValue, forState: .Normal)
                 fifthSubEntrantType.hidden = true
             case EntrantTypes.Manager.rawValue:
                 self.selectedSubEntrant = sender
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
                 lastNameTextField.backgroundColor = UIColor.whiteColor()
                 dateOfBirthTextFields.userInteractionEnabled = true
                 dateOfBirthTextFields.backgroundColor = UIColor.whiteColor()
-            case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, Employee.Contract.rawValue, Guest.Season.rawValue:
+            case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, ContractEmployee.Contract.rawValue, Guest.Season.rawValue:
                 enableAddressTextfields()
 
             default:
@@ -122,7 +122,7 @@ class ViewController: UIViewController {
                     firstNameTextField.text = fakePerson.firstName
                     lastNameTextField.text = fakePerson.lastName
                     dateOfBirthTextFields.text = String(fakePerson.dateOfBirth)
-                case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, Employee.Contract.rawValue, Guest.Season.rawValue, Manager.Manager.rawValue:
+                case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, ContractEmployee.Contract.rawValue, Guest.Season.rawValue, Manager.Manager.rawValue:
                     firstNameTextField.text = fakePerson.firstName
                     lastNameTextField.text = fakePerson.lastName
                     streetTextfield.text = fakePerson.streetAddress
@@ -169,7 +169,7 @@ class ViewController: UIViewController {
                 case Guest.Senior.rawValue:
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: nil, city: nil, state: nil, zipCode: nil, dateOfBirth: NSDate())
                     self.pass = PassGenerator(entrant: person!, entrantType: title)
-                case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, Employee.Contract.rawValue, Guest.Season.rawValue, Manager.Manager.rawValue:
+                case Employee.Food.rawValue, Employee.Ride.rawValue, Employee.Maintenance.rawValue, ContractEmployee.Contract.rawValue, Guest.Season.rawValue, Manager.Manager.rawValue:
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
                     self.pass = PassGenerator(entrant: person!, entrantType: title)
                 case Vendor.Vendor.rawValue:
@@ -189,8 +189,8 @@ class ViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showPass" {
-            print("prepare for segue called, passing \(self.pass)")
-            let vc = PassViewController()
+            print("prepare for segue called, passing \(self.pass?.entrant.firstName)")
+            let vc = segue.destinationViewController as! PassViewController
             vc.generatedPass = self.pass
         }
     }

@@ -136,10 +136,10 @@ enum Guest: String, Entrant {
 
 
 enum Employee: String, Entrant {
-    case Food, Ride, Maintenance,  Contract
+    case Food, Ride, Maintenance
     func areasAccess() -> AreaAccessType {
     switch self {
-    case .Food, Ride, .Contract:
+    case .Food, Ride:
         return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
     case .Maintenance:
         return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: false)
@@ -153,8 +153,7 @@ enum Employee: String, Entrant {
         switch self {
         case .Food, .Ride, .Maintenance:
             return RideAccessType(all: true, skipAll: true)
-        case .Contract:
-            return RideAccessType(all: false, skipAll: false)
+
         }
     }
     
@@ -162,13 +161,37 @@ enum Employee: String, Entrant {
         switch self {
         case .Food, .Ride, .Maintenance:
             return DiscountAccessType(foodDiscount: 15, merchandiseDiscount: 25)
-        case .Contract:
-            return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
         }
     }
 
 }
 /* I have created the Vendor and Manager as an enums to be in line with other types of entrants which I think makes the code easier to read and more scalable if we add more types of Vendors in the future, however, switch statements wouldn't be needed it here since there's just one value*/
+
+enum ContractEmployee: String, Entrant {
+    case Contract
+    func areasAccess() -> AreaAccessType {
+        switch self {
+        case  .Contract:
+            return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
+        }
+        
+    }
+    
+    func rideAccess() -> RideAccessType {
+        switch self {
+        case .Contract:
+            return RideAccessType(all: false, skipAll: false)
+        }
+    }
+    
+    func discountAccess() -> DiscountAccessType {
+        switch self {
+        case .Contract:
+            return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
+        }
+    }
+    
+}
 enum Vendor: String, Entrant {
     case Vendor
     func areasAccess() -> AreaAccessType {
