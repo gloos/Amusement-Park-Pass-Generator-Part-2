@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     var vendorDateOfVisit = NSDate()
     @IBOutlet weak var firstEntrantType: UIButton!
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var zipcodeTextfield: UITextField!
     var selectedSubEntrant: UIButton?
     var pass: PassGenerator?
-    let fakePerson = Person(firstName: "John", lastName: "Doe", streetAddress: "10 Downing Street", city: "London", state: "England", zipCode: 5451, dateOfBirth: NSDate())
+    let fakePerson = Person(firstName: "John", lastName: "Doe", streetAddress: "10 Downing Street", city: "London", state: "England", zipCode: 5451, dateOfBirth: NSDate(), project: nil, company: nil)
 
     @IBAction func entrantButtonTapped(sender: UIButton) {
         resetForm()
@@ -108,6 +108,10 @@ class ViewController: UIViewController {
         setButtonTitles()
         hideAllSubEntrantTypeButtons()
         disableForm()
+        zipcodeTextfield.delegate = self
+        ssnTextfield.delegate = self
+        projectNoTextfield.delegate = self
+        firstNameTextField.delegate = self
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -167,39 +171,39 @@ class ViewController: UIViewController {
                 var person: Person?
                 switch title {
                 case Guest.Child.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Guest.Child)
                 case Guest.Senior.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Guest.Senior)
                 case Employee.Ride.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Employee.Ride)
                 case Employee.Maintenance.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Employee.Maintenance)
                 case ContractEmployee.Contract.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: Int(projectNoTextfield.text!), company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: ContractEmployee.Contract)
 
                 case Guest.Season.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Guest.Season)
                 case Guest.VIP.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Guest.VIP)
                 case Guest.Classic.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Guest.Classic)
                 case Manager.Manager.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Manager.Manager)
 
                 case Employee.Food.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Employee.Food)
                 case Vendor.Vendor.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: nil, city: nil, state: nil, zipCode: nil, dateOfBirth: NSDate())
+                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: nil, city: nil, state: nil, zipCode: nil, dateOfBirth: NSDate(), project: nil, company: companyTextfield.text!)
                     self.pass = PassGenerator(entrant: person!, entrantType: Vendor.Vendor)
                     firstNameTextField.text = fakePerson.firstName
                     lastNameTextField.text = fakePerson.lastName
@@ -305,6 +309,36 @@ class ViewController: UIViewController {
     func compareDates(date: NSDate) -> Bool {
         let today = NSDate()
         return NSCalendar.currentCalendar().isDate(today, equalToDate: date, toUnitGranularity: [.Day, .Month])
+    }
+    
+    //MARK: Delegate methods
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        //Note to reviewer: I have only implemented the zipcode. The instructions say I should impement a phone number but that is not specified anywhere else in the instructions or mockups so I am confused. The process would be the same anyway.
+        let zipText = (zipcodeTextfield.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        if let intText = Int(zipText) {
+            print("The zip code is an int \(intText)")
+        } else {
+            let alertController = UIAlertController(title: "The Zip Code can only contain numbers", message: "Letters are not allowed in the zip code field", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+                print("OK")
+            }
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            zipcodeTextfield.text = nil
+        }
+        
+        //Max character count for first name:
+        // Note to reviewer. The implementation is commented out as I have found no way to make the zipCode int check and this string length check work together within this delegate method. Both implemtations should work independently
+//        let characterCount = firstNameTextField.text?.characters.count ?? 0
+//        if (range.length + range.location > characterCount) {
+//           return false
+//        }
+//        let newLength = characterCount + string.characters.count - range.length
+//        return newLength <= 25
+//        
+        return true
     }
 
 }

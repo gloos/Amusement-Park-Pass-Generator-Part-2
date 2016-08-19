@@ -60,47 +60,13 @@ struct Person: FullyNamed {
     var state: String?
     var zipCode: Int?
     var dateOfBirth: NSDate?
+    var project: Int?
+    var company: String?
 
 }
 
 
 
-extension AreaAccess {
-    func determineAcessArea(project: Int?, company: String?) -> AreaAccessType {
-        if project != nil {
-            switch project! {
-            case 1001:
-                return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
-            case 1002:
-                return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: true, officeArea: false)
-            case 1003:
-                return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: true)
-            case 2001:
-                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: true)
-            case 2002:
-                return AreaAccessType(amusementArea: false, kitchenArea: true, rideControl: false, maintenanceArea: true, officeArea: false)
-            default:
-                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
-
-            }
-        } else if company != nil {
-            switch company! {
-                case "Acme":
-                    return AreaAccessType(amusementArea: false, kitchenArea: true, rideControl: false, maintenanceArea: false, officeArea: false)
-                case "Orkin":
-                    return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: false, officeArea: false)
-                case "Fedex":
-                    return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: true, officeArea: true)
-                case "NW Electrical":
-                    return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: true)
-            default:
-                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
-            }
-        } else {
-            return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
-        }
-    }
-}
 
 
 enum EntrantTypes: String {
@@ -219,6 +185,41 @@ enum Vendor: String, Entrant {
         switch self {
         case .Vendor:
             return DiscountAccessType(foodDiscount: 0, merchandiseDiscount: 0)
+        }
+    }
+    
+    func determineAcessArea(project: Int?, company: String?) -> AreaAccessType {
+        if project != nil {
+            switch project! {
+            case 1001:
+                return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: false, officeArea: false)
+            case 1002:
+                return AreaAccessType(amusementArea: true, kitchenArea: false, rideControl: true, maintenanceArea: true, officeArea: false)
+            case 1003:
+                return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: true)
+            case 2001:
+                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: true)
+            case 2002:
+                return AreaAccessType(amusementArea: false, kitchenArea: true, rideControl: false, maintenanceArea: true, officeArea: false)
+            default:
+                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
+                
+            }
+        } else if company != nil {
+            switch company! {
+            case "Acme":
+                return AreaAccessType(amusementArea: false, kitchenArea: true, rideControl: false, maintenanceArea: false, officeArea: false)
+            case "Orkin":
+                return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: false, officeArea: false)
+            case "Fedex":
+                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: true, officeArea: true)
+            case "NW Electrical":
+                return AreaAccessType(amusementArea: true, kitchenArea: true, rideControl: true, maintenanceArea: true, officeArea: true)
+            default:
+                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
+            }
+        } else {
+            return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
         }
     }
     

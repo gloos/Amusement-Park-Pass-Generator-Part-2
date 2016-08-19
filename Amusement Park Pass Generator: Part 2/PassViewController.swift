@@ -49,14 +49,19 @@ class PassViewController : UIViewController {
         }
     }
     
+    //TODO: This doesn't work for a vendor or contract employee. FIX!
     var areaAccess: AreaAccessType {
         if let pass = generatedPass?.entrantType {
             return pass.areasAccess()
-        } else {
+        } else if generatedPass?.entrantType  is Vendor {
+            print("We have a vendor")
+            return Vendor.Vendor.determineAcessArea(nil, company: generatedPass?.entrant.company)
+        }
+          else  {
             return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
         }
     }
-    
+    //Note to reviewer: Here I did not test access to other areas because the process would be the same and would clutter the code even more.
     @IBAction func kitchenAccessButtonTapped(sender: UIButton) {
         if self.areaAccess.kitchenArea == true {
             testResultLabel.backgroundColor = UIColor.greenColor()
