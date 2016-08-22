@@ -189,7 +189,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             self.presentViewController(alertController, animated: true, completion: nil)
 
                         } else {
-                            person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
+                            person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: dob, project: nil, company: nil)
                             self.pass = PassGenerator(entrant: person!, entrantType: Guest.Child)
                         }
                     }
