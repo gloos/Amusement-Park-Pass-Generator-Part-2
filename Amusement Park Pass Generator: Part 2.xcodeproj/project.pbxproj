@@ -12,7 +12,7 @@
 		4E1305111D6649FE00875280 /* PassGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1305101D6649FE00875280 /* PassGenerator.swift */; };
 		4E1305131D6658F100875280 /* PassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1305121D6658F100875280 /* PassViewController.swift */; };
 		4E16433A1D64845B00AE295D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1643391D64845B00AE295D /* AppDelegate.swift */; };
-		4E16433C1D64845B00AE295D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E16433B1D64845B00AE295D /* ViewController.swift */; };
+		4E16433C1D64845B00AE295D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E16433B1D64845B00AE295D /* MainViewController.swift */; };
 		4E16433F1D64845B00AE295D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E16433D1D64845B00AE295D /* Main.storyboard */; };
 		4E1643411D64845B00AE295D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E1643401D64845B00AE295D /* Assets.xcassets */; };
 		4E1643441D64845B00AE295D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E1643421D64845B00AE295D /* LaunchScreen.storyboard */; };
@@ -27,7 +27,7 @@
 		4E1305121D6658F100875280 /* PassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassViewController.swift; sourceTree = "<group>"; };
 		4E1643361D64845B00AE295D /* Amusement Park Pass Generator: Part 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amusement Park Pass Generator: Part 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1643391D64845B00AE295D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4E16433B1D64845B00AE295D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4E16433B1D64845B00AE295D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4E16433E1D64845B00AE295D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E1643401D64845B00AE295D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E1643431D64845B00AE295D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4E1305121D6658F100875280 /* PassViewController.swift */,
-				4E16433B1D64845B00AE295D /* ViewController.swift */,
+				4E16433B1D64845B00AE295D /* MainViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -180,7 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E1643501D6492A200AE295D /* Model.swift in Sources */,
-				4E16433C1D64845B00AE295D /* ViewController.swift in Sources */,
+				4E16433C1D64845B00AE295D /* MainViewController.swift in Sources */,
 				4E1643511D6492A200AE295D /* ErrorTypes.swift in Sources */,
 				4E1305131D6658F100875280 /* PassViewController.swift in Sources */,
 				4E16433A1D64845B00AE295D /* AppDelegate.swift in Sources */,
