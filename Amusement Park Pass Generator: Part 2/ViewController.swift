@@ -112,6 +112,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         ssnTextfield.delegate = self
         projectNoTextfield.delegate = self
         firstNameTextField.delegate = self
+
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -171,8 +172,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 var person: Person?
                 switch title {
                 case Guest.Child.rawValue:
-                    person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
-                    self.pass = PassGenerator(entrant: person!, entrantType: Guest.Child)
+                    
+                    //Here we compare the child's date of birth against the current date
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yy"
+                    if let dobString = dateOfBirthTextFields.text, let dob = dateFormatter.dateFromString(dobString) {
+                     let yearsGap = NSDate().yearsFrom(dob)
+                        if yearsGap > 5 {
+                            print("The child is older than 5")
+                            let alertController = UIAlertController(title: "The child cannot go in for free if older than 5", message: "Please select a Classic Pass", preferredStyle: UIAlertControllerStyle.Alert)
+                            
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+                                print("OK")
+                            }
+                            alertController.addAction(okAction)
+                            self.presentViewController(alertController, animated: true, completion: nil)
+
+                        } else {
+                            person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
+                            self.pass = PassGenerator(entrant: person!, entrantType: Guest.Child)
+                        }
+                    }
                 case Guest.Senior.rawValue:
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Guest.Senior)
@@ -306,10 +326,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return calendar.dateByAddingUnit(.Day, value: -2, toDate: NSDate(), options: [])!
     }
     
-    func compareDates(date: NSDate) -> Bool {
-        let today = NSDate()
-        return NSCalendar.currentCalendar().isDate(today, equalToDate: date, toUnitGranularity: [.Day, .Month])
-    }
+
     
     //MARK: Delegate methods
     
@@ -341,5 +358,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+}
+
+extension NSDate {
+    func yearsFrom(date: NSDate) -> Int {
+        return NSCalendar.currentCalendar().components(.Year, fromDate: date, toDate: self, options: []).year
+    }
 }
 
