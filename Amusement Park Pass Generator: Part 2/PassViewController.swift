@@ -49,18 +49,35 @@ class PassViewController : UIViewController {
         }
     }
     
-    //TODO: This doesn't work for a vendor or contract employee. FIX!
+    
     var areaAccess: AreaAccessType {
         if let pass = generatedPass?.entrantType {
-            return pass.areasAccess()
-        } else if generatedPass?.entrantType  is Vendor {
-            print("We have a vendor")
-            return Vendor.Vendor.determineAcessArea(nil, company: generatedPass?.entrant.company)
+            print("The pass is of type \(pass)")
+            switch pass {
+            case is Employee, is Guest, is Manager:
+                return pass.areasAccess()
+            case is Vendor:
+                print("We have a vendor")
+                if let company = generatedPass?.entrant.company {
+                    let vendorAccess = Vendor.Vendor.determineAcessArea(company)
+                    print(vendorAccess)
+                    return vendorAccess
+                }
+
+            case is ContractEmployee:
+                if let project = generatedPass?.entrant.project {
+                    let contractorAccess = ContractEmployee.Contract.determineAccessArea(project)
+                    print(contractorAccess)
+                    return contractorAccess
+                }
+            default:
+                return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
+            }
+
         }
-          else  {
-            return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
-        }
+        return AreaAccessType(amusementArea: false, kitchenArea: false, rideControl: false, maintenanceArea: false, officeArea: false)
     }
+    
     //Note to reviewer: Here I did not test access to other areas because the process would be the same and would clutter the code even more.
     @IBAction func kitchenAccessButtonTapped(sender: UIButton) {
         if self.areaAccess.kitchenArea == true {
