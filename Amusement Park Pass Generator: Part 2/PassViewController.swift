@@ -91,6 +91,54 @@ class PassViewController : UIViewController {
             
         }
     }
+    @IBAction func amusementAccessButtonTapped(sender: UIButton) {
+        if self.areaAccess.amusementArea == true {
+            testResultLabel.backgroundColor = UIColor.greenColor()
+            playGrantedAccessSound()
+            testResultLabel.text = "Access Granted"
+        } else {
+            testResultLabel.backgroundColor = UIColor.redColor()
+            playDeniedAccessSound()
+            testResultLabel.text = "Access Denied!"
+            
+        }
+    }
+    @IBAction func rideAccessButtonTapped(sender: UIButton) {
+        if self.areaAccess.rideControl == true {
+            testResultLabel.backgroundColor = UIColor.greenColor()
+            playGrantedAccessSound()
+            testResultLabel.text = "Access Granted"
+        } else {
+            testResultLabel.backgroundColor = UIColor.redColor()
+            playDeniedAccessSound()
+            testResultLabel.text = "Access Denied!"
+            
+        }
+    }
+    @IBAction func maintenanceAccessButtonTapped(sender: UIButton) {
+        if self.areaAccess.maintenanceArea == true {
+            testResultLabel.backgroundColor = UIColor.greenColor()
+            playGrantedAccessSound()
+            testResultLabel.text = "Access Granted"
+        } else {
+            testResultLabel.backgroundColor = UIColor.redColor()
+            playDeniedAccessSound()
+            testResultLabel.text = "Access Denied!"
+            
+        }
+    }
+    @IBAction func officeAccessButtonTapped(sender: UIButton) {
+        if self.areaAccess.officeArea == true {
+            testResultLabel.backgroundColor = UIColor.greenColor()
+            playGrantedAccessSound()
+            testResultLabel.text = "Access Granted"
+        } else {
+            testResultLabel.backgroundColor = UIColor.redColor()
+            playDeniedAccessSound()
+            testResultLabel.text = "Access Denied!"
+            
+        }
+    }
     @IBAction func skipLineButtonTapped(sender: UIButton) {
         if generatedPass?.entrantType.rideAccess().skipAll == true {
             testResultLabel.backgroundColor = UIColor.greenColor()
@@ -100,6 +148,18 @@ class PassViewController : UIViewController {
             testResultLabel.backgroundColor = UIColor.redColor()
             playDeniedAccessSound()
             testResultLabel.text = "Access Denied!"
+            
+        }
+    }
+    @IBAction func merchandiseDiscountButtonTapped(sender: UIButton) {
+        if let merchandiseDiscount = self.discount.merchandiseDiscount where merchandiseDiscount != 0 {
+            testResultLabel.backgroundColor = UIColor.greenColor()
+            playGrantedAccessSound()
+            testResultLabel.text = "The Entrant has \(merchandiseDiscount) % off here!"
+        } else {
+            testResultLabel.backgroundColor = UIColor.redColor()
+            playDeniedAccessSound()
+            testResultLabel.text = "This Entrant has no discount here. :("
             
         }
     }
