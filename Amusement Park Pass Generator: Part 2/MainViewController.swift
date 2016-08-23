@@ -206,16 +206,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Guest.Senior)
                 case Employee.Ride.rawValue:
+                    checkAddress()
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Employee.Ride)
                 case Employee.Maintenance.rawValue:
+                    checkAddress()
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Employee.Maintenance)
                 case ContractEmployee.Contract.rawValue:
+                    checkAddress()
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: Int(projectNoTextfield.text!), company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: ContractEmployee.Contract)
 
                 case Guest.Season.rawValue:
+                    checkAddress()
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Guest.Season)
                 case Guest.VIP.rawValue:
@@ -225,6 +229,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Guest.Classic)
                 case Manager.Manager.rawValue:
+                    checkAddress()
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Manager.Manager)
 
@@ -335,6 +340,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return calendar.dateByAddingUnit(.Day, value: -2, toDate: NSDate(), options: [])!
     }
     
+    func checkAddress() {
+        if firstNameTextField.text == nil || lastNameTextField.text == nil || streetTextfield.text == nil || cityTextfield.text == nil || stateTextfield.text == nil || zipcodeTextfield.text == nil {
+            let alertController = UIAlertController(title: "The address is not correctly defined", message: "Please enter value for the address fields", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+                print("OK")
+            }
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
 
     
     //MARK: Delegate methods
