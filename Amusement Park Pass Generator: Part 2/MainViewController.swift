@@ -172,7 +172,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 var person: Person?
                 switch title {
                 case Guest.Child.rawValue:
-                    
+
                     //Here we compare the child's date of birth against the current date
                     let dateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "MM/dd/yy"
@@ -192,6 +192,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: dob, project: nil, company: nil)
                             self.pass = PassGenerator(entrant: person!, entrantType: Guest.Child)
                         }
+                    } else {
+                        // Either the string cannot be converted to a date or there is no text in the textfield
+                        let alertController = UIAlertController(title: "You have entered an invalid date", message: "Please use the specified format", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
+                            print("OK")
+                        }
+                        alertController.addAction(okAction)
+                        self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 case Guest.Senior.rawValue:
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
