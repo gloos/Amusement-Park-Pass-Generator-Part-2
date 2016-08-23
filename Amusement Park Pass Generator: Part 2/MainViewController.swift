@@ -234,6 +234,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     self.pass = PassGenerator(entrant: person!, entrantType: Manager.Manager)
 
                 case Employee.Food.rawValue:
+                    checkAddress()
                     person = Person(firstName: firstNameTextField.text, lastName: lastNameTextField.text, streetAddress: streetTextfield.text, city: cityTextfield.text, state: stateTextfield.text, zipCode: Int(zipcodeTextfield.text!), dateOfBirth: NSDate(), project: nil, company: nil)
                     self.pass = PassGenerator(entrant: person!, entrantType: Employee.Food)
                 case Vendor.Vendor.rawValue:
@@ -341,7 +342,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func checkAddress() {
-        if firstNameTextField.text == nil || lastNameTextField.text == nil || streetTextfield.text == nil || cityTextfield.text == nil || stateTextfield.text == nil || zipcodeTextfield.text == nil {
+        if firstNameTextField.text == "" || lastNameTextField.text == "" || streetTextfield.text == "" || cityTextfield.text == "" || stateTextfield.text == "" || zipcodeTextfield.text == "" {
             let alertController = UIAlertController(title: "The address is not correctly defined", message: "Please enter value for the address fields", preferredStyle: UIAlertControllerStyle.Alert)
             
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (result : UIAlertAction) -> Void in
